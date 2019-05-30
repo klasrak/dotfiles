@@ -37,6 +37,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'sheerun/vim-polyglot'
   Plug 'vim-airline/vim-airline'
   Plug 'ternjs/tern_for_vim'
+  Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -142,6 +143,11 @@ let g:ycm_enable_diagnostic_highlighting = 0
 " Don't show YCM's preview window [ I find it really annoying ]
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
+
+
+" Enable emmet-vim only for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 
 " COLOR SCHEME
