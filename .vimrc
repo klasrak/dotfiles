@@ -29,12 +29,14 @@ call plug#begin('~/.vim/bundle')
   Plug 'tomasr/molokai'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'editorconfig/editorconfig-vim'
-  Plug 'vim-scripts/AutoComplPop'
+  Plug 'Valloric/YouCompleteMe'
   Plug 'Raimondi/delimitMate'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'scrooloose/nerdcommenter'
   Plug 'rking/ag.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'vim-airline/vim-airline'
+  Plug 'ternjs/tern_for_vim'
 
 call plug#end()
 
@@ -104,17 +106,17 @@ set noswapfile
 " SYNTASTIC
 " Syntastic is a syntax checking plugin for Vim that runs files through
 " external syntax checkers and displays any resulting errors to the user.
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " Configure Standard JS as default linter
-let g:syntastic_javascript_checkers = ['standard']
+"let g:syntastic_javascript_checkers = ['standard']
 
 
 "ALE
@@ -131,12 +133,23 @@ let g:ale_lint_on_save=1
 let g:ale_fix_on_save=1
 
 
+" Start autocompletion after 4 chars
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+
+
+" Don't show YCM's preview window [ I find it really annoying ]
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
+
 " COLOR SCHEME
 colorscheme molokai
 
 
 " FONT
-set guifont='Fira\ Code\ iScript'
+set guifont=Fira\ Code\ iScript
 set antialias
 
 
