@@ -34,6 +34,8 @@ call plug#begin('~/.vim/bundle')
   Plug 'jlanzarotta/bufexplorer'
   Plug 'jiangmiao/auto-pairs'
   Plug 'janko-m/vim-test'
+  Plug 'tmhedberg/SimpylFold'
+  Plug 'plytophogy/vim-virtualenv'
 
 " #### Languages Syntax
 
@@ -69,10 +71,20 @@ set smartcase
 
 " AUTO INDENTATION
 " Enable auto indentation with 'spaces' instead of 'tabs'
-set smartindent
-set expandtab
-set softtabstop=2
-set shiftwidth=2
+au BufNewFile,BufRead *.py
+  \ set smartindent |
+  \ set expandtab |
+  \ set tabstop=4 |
+  \ set softtabstop=4 |
+  \ set shiftwidth=4 |
+  \ set textwidth=79 |
+  \ set fileformat=unix |
+
+au BufNewFile,BufRead *.js,*.html,*.css
+  \ set smartindent |
+  \ set expandtab |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2 |
 
 " MOVING BETWEEN FILES
 " Set 'hidden' if you wawnt to open a new file inside the same buffer without
@@ -145,7 +157,9 @@ set showmatch
 set cursorline
 
 " Eable folding and set it to use the marker
-set foldenable foldmethod=indent
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
 
 " Change folding text
 function! MyFoldText() " {{{
