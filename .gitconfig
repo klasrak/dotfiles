@@ -1,0 +1,11 @@
+[user]
+	email = dasf_cm@terra.com.br
+	name = Danilo Augusto
+[push]
+    followTags = true
+[core]
+    editor = code --wait
+[alias]
+    s = !git status -s
+    c = !git add --all && git commit -m
+    l = !git log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
