@@ -1,6 +1,6 @@
 [user]
-	email = dasf_cm@terra.com.br
-	name = Danilo Augusto
+    email = dasf_cm@terra.com.br
+    name = Danilo Augusto
 [push]
     followTags = true
 [core]
