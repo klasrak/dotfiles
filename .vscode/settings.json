@@ -1,0 +1,49 @@
+{
+    "editor.fontFamily": "'Cascadia Code', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.minimap.enabled": false,
+    "go.useLanguageServer": true,
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        // Optional: Disable snippets, as they conflict with completion ranking.
+        "editor.snippetSuggestions": "none"
+    },
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "gopls": {
+        // Add parameter placeholders when completing a function.
+        "usePlaceholders": true,
+        // If true, enable additional analyses with staticcheck.
+        // Warning: This will significantly increase memory usage.
+        "staticcheck": false
+    },
+    "[proto3]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "sqltools.useNodeRuntime": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    // "C_Cpp.clang_format_style": "file",
+    // "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, IndentWidth:4, ColumnLimit:0}",
+    "C_Cpp.clang_format_sortIncludes": true,
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.updateChannel": "Insiders",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.colorTheme": "GitHub Light"
+}
