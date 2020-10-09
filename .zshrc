@@ -4,6 +4,20 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/danilo/.oh-my-zsh"
 
+# Java
+export JAVA_HOME='$SDKMAN_DIR/candidates/java/current'
+
+# Custom Alias
+alias manage='python $VIRTUAL_ENV/../manage.py'
+alias awslogin='$(aws ecr get-login --region us-east-1 --no-include-email)'
+
+# Golang 
+export GOPATH=$(go env GOPATH)
+export GOROOT=$(go env GOROOT)
+# protoc-gen-go to use gRPC protocol on golang
+export PATH="$PATH:$(go env GOPATH)/bin"
+export GO111MODULE=auto
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -153,6 +167,32 @@ zinit light zdharma/fast-syntax-highlighting
 
 # Plugin history-search-multi-word loaded with investigating.
 zinit load zdharma/history-search-multi-word
+
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#compdef createnv
+_createnv() {
+  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _CREATENV_COMPLETE=complete-zsh  createnv)
+}
+if [[ "$(basename -- ${(%):-%x})" != "_createnv" ]]; then
+  compdef _createnv createnv
+fi
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/danilo/.sdkman"
+[[ -s "/home/danilo/.sdkman/bin/sdkman-init.sh" ]] && source "/home/danilo/.sdkman/bin/sdkman-init.sh"
