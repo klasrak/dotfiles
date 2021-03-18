@@ -7,9 +7,27 @@ export ZSH="/home/danilo/.oh-my-zsh"
 # Java
 export JAVA_HOME='$SDKMAN_DIR/candidates/java/current'
 
+### Pyenv stuff
+export PATH="/home/danilo/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+### Android stuff
+export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_TOOLS="$ANDROID_HOME/tools"
+export ANDROID_PLATFORM_TOOLS="$ANDROID_HOME/platform-tools"
+export ANDROID_PLATFORM_BUILD_TOOLS="$ANDROID_HOME/build-tools/30.0.3"
+export PATH="$ANDROID_HOME:$PATH"
+export PATH="$ANDROID_SDK_ROOT:$PATH"
+export PATH="$ANDROID_TOOLS:$PATH"
+export PATH="$ANDROID_PLATFORM_TOOLS:$PATH"
+export PATH="$ANDROID_PLATFORM_BUILD_TOOLS:$PATH"
+
 # Custom Alias
 alias manage='python $VIRTUAL_ENV/../manage.py'
 alias awslogin='$(aws ecr get-login --region us-east-1 --no-include-email)'
+alias dc='docker-compose'
 
 # Golang 
 export GOPATH=$(go env GOPATH)
